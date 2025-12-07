@@ -3,8 +3,6 @@ with open('input.txt') as f:
 beams = set()
 
 total_splits = 0
-total_timelines = 1
-
 
 for row in rows:
     for i, ch in enumerate(row):
@@ -18,3 +16,16 @@ for row in rows:
             total_splits+=1
 
 print('pt1:', total_splits)
+
+weights = [0] * len(rows[0])
+for row in rows:
+    for i, ch in enumerate(row):
+        if ch == 'S':
+            weights[i] = 1
+            break
+        if ch == '^':
+            weights[i-1] += weights[i]
+            weights[i+1] += weights[i]
+            weights[i] = 0
+
+print('pt2:', sum(weights))
