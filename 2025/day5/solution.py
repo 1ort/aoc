@@ -52,6 +52,7 @@ def merge_two_intervals(a: Interval, b: Interval) -> Interval | None:
     return Interval(a.start, max(a.end, b.end))
 
 while True:
+    # merge list of intervals until there are no possible merges left
     intervals = list(sorted(intervals, key=lambda i: i.start))
     start_size = len(intervals)
     merged_intervals = []
