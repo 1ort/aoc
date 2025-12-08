@@ -50,7 +50,6 @@ for i in range(1000):
     if dsu.connected(point_a, point_b):
         continue
     dsu.union(point_a, point_b)
-    last_connected = (point_a, point_b)
 
 dsu_circuits = defaultdict(set)
 for elem in dsu.dsu:
@@ -60,7 +59,6 @@ circuit_lens = sorted((len(circuit) for circuit in dsu_circuits.values()), rever
 
 print('pt1:', reduce(operator.mul, circuit_lens[:3]))
 
-last_connected = None
 dsu = DSU(points)
 while pt2_squared_distances:
     _, point_a, point_b = heapq.heappop(pt2_squared_distances)
